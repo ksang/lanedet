@@ -23,13 +23,13 @@ class Detect(object):
         self.net.eval()
         load_network(self.net, self.cfg.load_from)
 
-    def preprocess(self, img_path):
-        ori_img = cv2.imread(img_path)
+    def preprocess(self, ori_img):
+        # ori_img = cv2.imread(img_path)
         img = ori_img[self.cfg.cut_height:, :, :].astype(np.float32)
         data = {'img': img, 'lanes': []}
         data = self.processes(data)
         data['img'] = data['img'].unsqueeze(0)
-        data.update({'img_path':img_path, 'ori_img':ori_img})
+        data.update({'ori_img':ori_img})
         return data
 
     def inference(self, data):
