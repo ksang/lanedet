@@ -25,7 +25,7 @@ def draw_lanes(img, lanes):
             if x <= 0 or y <= 0:
                 continue
             x, y = int(x), int(y)
-            cv2.circle(img, (x, y), 4, (255, 0, 0), 2)
+            cv2.circle(img, (x, y), 4, (0, 255, 0), cv2.FILLED)
 
     return img
 
