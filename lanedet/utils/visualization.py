@@ -19,3 +19,13 @@ def imshow_lanes(img, lanes, show=False, out_file=None):
             os.makedirs(osp.dirname(out_file))
         cv2.imwrite(out_file, img)
 
+def draw_lanes(img, lanes):
+    for lane in lanes:
+        for x, y in lane:
+            if x <= 0 or y <= 0:
+                continue
+            x, y = int(x), int(y)
+            cv2.circle(img, (x, y), 4, (255, 0, 0), 2)
+
+    return img
+

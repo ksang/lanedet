@@ -8,7 +8,7 @@ import argparse
 from lanedet.datasets.process import Process
 from lanedet.models.registry import build_net
 from lanedet.utils.config import Config
-from lanedet.utils.visualization import imshow_lanes
+from lanedet.utils.visualization import imshow_lanes,draw_lanes
 from lanedet.utils.net_utils import load_network
 from pathlib import Path
 from tqdm import tqdm
@@ -44,6 +44,12 @@ class Detect(object):
             out_file = osp.join(out_file, osp.basename(data['img_path']))
         lanes = [lane.to_array(self.cfg) for lane in data['lanes']]
         imshow_lanes(data['ori_img'], lanes, show=self.cfg.show, out_file=out_file)
+
+    def draw(self, data, img=None):
+        if img is None:
+            img = data['ori_img']
+        lanes = [lane.to_array(self.cfg) for lane in data['lanes']]
+        return draw_lanes(img, lanes)
 
     def run(self, data):
         data = self.preprocess(data)
