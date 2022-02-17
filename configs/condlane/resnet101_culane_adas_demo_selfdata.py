@@ -80,7 +80,7 @@ img_norm = dict(
 )
 
 img_height = 320 
-img_width = 800
+img_width = 1920
 cut_height = 0 
 ori_img_h = 720
 ori_img_w = 1920
@@ -91,8 +91,8 @@ num_lane_classes = 1
 line_width = 3
 radius = 6
 nms_thr = 4
-img_scale = (800, 320)
-crop_bbox = [0, 50, 1920, 360]
+img_scale = (1920, 320)
+crop_bbox = [0, 40, 1920, 360]
 mask_size = (1, 80, 200)
 
 train_process = [
